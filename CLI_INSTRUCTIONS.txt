@@ -1,0 +1,76 @@
+PA1 PATHFINDING - CLI INSTRUCTIONS
+
+Requirements:
+- Python 3
+- No external Python packages are required
+
+TASK 1
+
+Task 1 uses the Manhattan distance heuristic.
+
+Command format:
+
+python3 task1.py <map_number>
+
+The map number must be between 1 and 5.
+
+Examples:
+
+python3 task1.py 1
+python3 task1.py 2
+python3 task1.py 3
+python3 task1.py 4
+python3 task1.py 5
+
+
+TASK 2
+
+Task 2 uses a map number and a heuristic number.
+
+Command format:
+
+python3 task2.py <map_number> <heuristic_number>
+
+Map numbers:
+1 = Map 1
+2 = Map 2
+3 = Map 3
+4 = Map 4
+5 = Map 5
+
+Heuristic numbers:
+1 = H1: Zero heuristic
+2 = H2: Manhattan distance
+3 = H3: Modified Manhattan heuristic
+4 = H4: Manhattan distance with random error
+
+Examples:
+
+python3 task2.py 1 1
+python3 task2.py 2 2
+python3 task2.py 3 3
+python3 task2.py 4 4
+python3 task2.py 5 3
+
+
+OUTPUT
+
+Each run displays:
+
+1) Cost of path found
+2) Path sequence
+3) Total nodes created
+4) Execution runtime in milliseconds
+
+If no path is found:
+
+Cost of path found : -1
+Path sequence      : NULL
+
+
+If python3 does not work, use python instead.
+
+Example:
+
+python task1.py 1
+python task2.py 1 2
