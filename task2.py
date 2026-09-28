@@ -202,28 +202,113 @@ def astar(maze, start, end, heuristic_number):
     return path
 
 
+def get_map(map_number):
+
+    if map_number == 1:
+
+        maze = [
+            [2, 4, 2, 1, 4, 5, 2],
+            [0, 1, 2, 3, 5, 3, 1],
+            [2, 0, 4, 4, 1, 2, 4],
+            [2, 5, 5, 3, 2, 0, 1],
+            [4, 3, 3, 2, 1, 0, 1]
+        ]
+
+        start = (1, 2)
+        end = (4, 3)
+
+    elif map_number == 2:
+
+        maze = [
+            [1, 3, 2, 5, 1, 4, 3],
+            [2, 1, 3, 1, 3, 2, 5],
+            [3, 0, 5, 0, 1, 2, 2],
+            [5, 3, 2, 1, 5, 0, 3],
+            [2, 4, 1, 0, 0, 2, 0],
+            [4, 0, 2, 1, 5, 3, 4],
+            [1, 5, 1, 0, 2, 4, 1]
+        ]
+
+        start = (3, 6)
+        end = (5, 1)
+
+    elif map_number == 3:
+
+        maze = [
+            [2, 0, 2, 0, 2, 0, 0, 2, 2, 0],
+            [1, 2, 3, 5, 2, 1, 2, 5, 1, 2],
+            [2, 0, 2, 2, 1, 2, 1, 2, 4, 2],
+            [2, 0, 1, 0, 1, 1, 1, 0, 0, 1],
+            [1, 1, 0, 0, 5, 0, 3, 2, 2, 2],
+            [2, 2, 2, 2, 1, 0, 1, 2, 1, 0],
+            [1, 0, 2, 1, 3, 1, 4, 3, 0, 1],
+            [2, 0, 5, 1, 5, 2, 1, 2, 4, 1],
+            [1, 2, 2, 2, 0, 2, 0, 1, 1, 0],
+            [5, 1, 2, 1, 1, 1, 2, 0, 1, 2]
+        ]
+
+        start = (1, 2)
+        end = (8, 8)
+
+    elif map_number == 4:
+
+        maze = [
+            [1, 2, 3, 1, 2, 4, 1, 3, 2, 1],
+            [1, 0, 0, 2, 0, 3, 2, 0, 4, 2],
+            [2, 1, 3, 1, 2, 1, 0, 2, 3, 1],
+            [3, 0, 2, 0, 4, 2, 1, 3, 0, 2],
+            [1, 2, 1, 3, 0, 2, 4, 1, 2, 1],
+            [2, 0, 3, 1, 2, 0, 1, 2, 3, 2],
+            [1, 3, 2, 4, 1, 2, 3, 0, 1, 1],
+            [2, 1, 0, 2, 3, 1, 2, 4, 2, 3],
+            [3, 2, 1, 3, 0, 2, 1, 2, 4, 2],
+            [1, 1, 2, 1, 3, 2, 1, 1, 2, 1]
+        ]
+
+        start = (0, 0)
+        end = (9, 9)
+
+    elif map_number == 5:
+
+        maze = [
+            [2, 1, 4, 2, 3, 1, 2, 5, 1, 2],
+            [1, 0, 2, 0, 1, 3, 0, 2, 4, 1],
+            [3, 2, 1, 2, 0, 4, 1, 0, 2, 3],
+            [2, 0, 3, 1, 2, 0, 4, 2, 1, 2],
+            [1, 3, 0, 2, 5, 1, 2, 3, 0, 1],
+            [2, 1, 2, 0, 3, 2, 0, 1, 2, 4],
+            [4, 0, 1, 3, 2, 1, 3, 0, 2, 1],
+            [1, 2, 3, 1, 0, 2, 4, 1, 3, 2],
+            [2, 0, 2, 4, 1, 3, 1, 2, 0, 1],
+            [1, 2, 1, 2, 3, 1, 2, 1, 2, 1]
+        ]
+
+        start = (9, 0)
+        end = (0, 9)
+
+    return maze, start, end
+
+
 def main():
 
-    maze = [
-        [1, 2, 1, 1, 0, 1, 1],
-        [1, 5, 4, 1, 0, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 3, 0, 0, 1],
-        [1, 1, 1, 2, 1, 1, 1]
-    ]
-
-    start = (0, 0)
-    end = (4, 6)
-
-    if len(sys.argv) < 2:
-        print("Usage: python task2.py <heuristic 1-4>")
+    if len(sys.argv) != 3:
+        print("Usage: python3 task2.py <map 1-5> <heuristic 1-4>")
         return
 
-    heuristic_number = int(sys.argv[1])
+    map_number = int(sys.argv[1])
+    heuristic_number = int(sys.argv[2])
+
+    if map_number < 1 or map_number > 5:
+        print("Map must be between 1 and 5.")
+        return
 
     if heuristic_number < 1 or heuristic_number > 4:
         print("Heuristic must be between 1 and 4.")
         return
+
+    maze, start, end = get_map(map_number)
+
+    print(f"Map {map_number}")
 
     astar(
         maze,
